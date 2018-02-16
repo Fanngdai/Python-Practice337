@@ -34,8 +34,8 @@ else:
         lst = line.split(",")
         
         try:
-            time = datetime.datetime.fromtimestamp(int(lst[0]))
-            fout.write(time.strftime('%Y-%m-%d %H:%M:%S') + "\t" + lst[1])
+            time = datetime.datetime.fromtimestamp(int(lst[0])+18000) # GMT time
+            fout.write(time.strftime('%Y-%m-%d %H:%M:%S') + "\n")
             line = file.readline()
         except ValueError:
             break
