@@ -24,47 +24,46 @@ try:
 except IOError:
     print "Unable to open the file prices_sample.cvs"
 else:
-    lstX = []
-    lstY = []
-    avgX = 0
-    avgY = 0
+    sumXY = 0
+    sumX = 0
+    sumY = 0
+    sumX2 = 0
+    sumY2 = 0
+    length = 0
     line = file.readline()
     
     while line:
-        lst = line.split(",")
-        
         try:
-            lstX.append(int(lst[0]))
-            lstY.append(float(lst[1]))
-            avgX += int(lst[0])
-            avgY += float(lst[1])
+            lst = line.split(",")
+            x = int(lst[0])
+            y = float(lst[1])
             
-#            valueX = int(lst[0])
-#            valueX -= abs(valueX)
-#            valueY = float(lst[1])
-#            valueY -= abs(valueY)
-#            
-#            sumTop += valueX * valueY
-#            sumX += valueX**2
-#            sumY += valueY**2
+            sumXY += x*y
+            sumX += x
+            sumY += y
+            sumX2 += x**2
+            sumY2 += y**2
+            length += 1
+            
             line = file.readline()
         except ValueError:
             break
 
     file.close()
 
-    length = len(lstX)
-    avgX /= length
-    avgY /= length
-
-    for x in lstX:
-
-
-#    sumX = math.sqrt(sumX)
-#    sumY = math.sqrt(sumY)
     try:
-#        total = sumTop / (sumX * sumY)
-        print(str(total))
+        temp = (sumX*sumY)/length
+        top = sumXY - temp
+        
+        tempX = (sumX**2)/length
+        tempX = sumX2 - tempX
+        
+        tempY = (sumY**2)/length
+        tempY = sumY2 - tempY
+
+        bottom = tempX * tempY
+        bottom = math.sqrt(bottom)
+
+        print(str(top/bottom))
     except ZeroDivisionError:
         print("Cannot divide by zero")
-#            time = datetime.datetime.fromtimestamp(int(lst[0]))
