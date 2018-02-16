@@ -21,7 +21,6 @@
 # datetimes.txt. [7 pts]
 
 import datetime
-import os
 
 try:
     file = open("prices_sample.csv")
@@ -35,11 +34,11 @@ else:
         lst = line.split(",")
         
         try:
-            time = datetime.datetime.fromtimestamp(float(lst[0]))
+            time = datetime.datetime.fromtimestamp(int(lst[0]))
         except ValueError:
             break
         
-        fout.write(time.strftime('%Y-%m-%d %H:%M:%S') + "\t" + lst[1] + "\n")
+        fout.write(time.strftime('%Y-%m-%d %H:%M:%S') + "\t" + lst[1])
         line = file.readline()
 
     fout.close()

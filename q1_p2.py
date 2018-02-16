@@ -8,15 +8,50 @@
 # deviation for the prices. Find the corresponding dates for max, min and mean, and print
 # them to screen. [13 pts]
 
-max = 0
-min = 0
-Avg = 0
-sd # Standard Deviation
-sum
-totalAmt
+import datetime
+import math
 
-print("The max is " + str(max) + "\n")
-print("The date associated with that is ")
-print("The min is " + str(min) + "\n")
-print("The date associated with that is ")
-print("The mean is " + str(avg) + "\n")
+try:
+    file = open("prices_sample.csv")
+except IOError:
+    print "Unable to open the file prices_sample.cvs"
+else:
+    line = file.readline()
+    dates = []
+    values = {}
+    
+    while line:
+        lst = line.split(",")
+        try:
+            values[float(lst[1])] = int(lst[0])
+            line = file.readline()
+        except ValueError:
+            break
+
+    file.close()
+    valueSort = values.keys()
+    valueSort.sort()
+
+    print("The max is " + str(valueSort[-1]))
+    time = datetime.datetime.fromtimestamp(values[valueSort[-1]])
+    print("The date associated with that is " + time.strftime('%Y-%m-%d %H:%M:%S') + "\n")
+
+    print("The min is " + str(valueSort[0]))
+    time = datetime.datetime.fromtimestamp(values[valueSort[0]])
+    print("The date associated with that is " + time.strftime('%Y-%m-%d %H:%M:%S') + "\n")
+
+    length = len(values)
+
+    print("The medium is " + str(valueSort[int(length/2)]))
+    time = datetime.datetime.fromtimestamp(values[valueSort[int(length/2)]])
+    print("The date associated with that is " + time.strftime('%Y-%m-%d %H:%M:%S'))
+
+    print
+    total = reduce(lambda x,y: x + y, valueSort)
+    avg = total/length
+    print("The mean is " + str(avg))
+
+    sum = map(lambda x: (x-avg)**2, values) # (x-avg)^2
+    total = reduce(lambda x,y: x + y, sum)  # Add all values
+    total /= length
+    print("The standard deviation is " + str(math.sqrt(total)))
