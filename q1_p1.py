@@ -35,11 +35,10 @@ else:
         
         try:
             time = datetime.datetime.fromtimestamp(int(lst[0]))
+            fout.write(time.strftime('%Y-%m-%d %H:%M:%S') + "\t" + lst[1])
+            line = file.readline()
         except ValueError:
             break
-        
-        fout.write(time.strftime('%Y-%m-%d %H:%M:%S') + "\t" + lst[1])
-        line = file.readline()
 
     fout.close()
     file.close()
