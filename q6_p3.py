@@ -29,6 +29,6 @@ def helper(lst1, lst2, res, i, j, lis):
         helper(lst1, lst2, res, i, j + 1, lis)
         res.remove(lst2[j])
 
-lst1 = [1,2]
-lst2 = [3,4]
-interleave(lst1, lst2)
+#lst1 = [1,2]
+#lst2 = [3,4]
+#interleave(lst1, lst2)
