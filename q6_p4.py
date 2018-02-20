@@ -50,5 +50,8 @@ def count_pattern(str, pattern, replace_str):
 #    pat = re.compile(pattern)
 #    pat = ascii.pat.findall(str)
 
-str = 'shjhfdddedaaba'
-count_pattern(str, 'xyx', '123')
+#str = 'shjhfdddedaABAB'
+#count_pattern(str, 'xyx', '123')
+
+#str = 'aaaaa'
+#count_pattern(str, 'xx', '12')

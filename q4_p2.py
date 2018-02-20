@@ -22,7 +22,16 @@ sortlst = []
 for key, value in sorted(lst.iteritems(), key=lambda (k,v): (v,k)):
     sortlst.append(key + "\t" + str(value))
 
-fout = open("top10words.txt", "a")
-for i in range(len(sortlst)-1, len(sortlst)-11, -1):
-    fout.write(sortlst[i] + "\n")
-fout.close()
+try:
+    sub = 11
+    if len(sortlst) < 10:
+        sub = len(sortlst) + 1
+    
+    fout = open("top10words.txt", "w+")
+    for i in range(len(sortlst)-1, len(sortlst)-sub, -1):
+        fout.write(sortlst[i] + "\n")
+    fout.close()
+except IOError:
+    print "Unable to open the file"
+except IndexError:
+    print "",

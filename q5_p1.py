@@ -23,6 +23,8 @@
 # criteria, and returns True if the password is strong enough, and False if the password
 # is not strong enough[10 pts].
 
+import math
+
 digit = lambda word: any(i.isdigit() for i in word)
 alpha = lambda word: any(i.isalpha() for i in word)
 def special(password):
@@ -64,7 +66,7 @@ def password_check(password):
         return False
     if increaseValue(password) == False:
         return False
-    if len(''.join(set(password))) < len(password)/2:
+    if len(''.join(set(password))) < math.ceil(len(password)/2.0):
         return False
     return True
 

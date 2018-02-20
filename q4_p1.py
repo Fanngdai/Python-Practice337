@@ -38,3 +38,9 @@ def wordAnalytic():
             line = file.readline()
         file.close()
     return word
+
+#lst = wordAnalytic()
+#fout = open("q4_p1.txt", "w+")
+#for i in lst:
+#    fout.write( i + "\t" + str(lst[i]) + "\n")
+#fout.close()
