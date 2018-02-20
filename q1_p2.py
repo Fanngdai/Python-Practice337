@@ -24,41 +24,70 @@ except IOError:
     print "Unable to open the file prices_sample.cvs"
 else:
     line = file.readline()
-    dates = []
+    amt = 0
     values = {}
+    temp = []
     
     while line:
         lst = line.split(",")
         try:
-            values[float(lst[1])] = int(lst[0])
+            values.setdefault(float(lst[1]), []).append(int(lst[0]))
+            temp.append(float(lst[1]))
             line = file.readline()
+            amt += 1
         except ValueError:
             break
-
     file.close()
-    valueSort = values.keys()
-    valueSort.sort()
 
-    print("The max is " + str(valueSort[-1]))
-    time = datetime.datetime.fromtimestamp(values[valueSort[-1]])
-    print("The date associated with that is " + time.strftime('%Y-%m-%d %H:%M:%S') + "\n")
+    price = sorted(temp);
 
-    print("The min is " + str(valueSort[0]))
-    time = datetime.datetime.fromtimestamp(values[valueSort[0]])
-    print("The date associated with that is " + time.strftime('%Y-%m-%d %H:%M:%S') + "\n")
+    max = price[-1]
+    print("MAX:\t" + str(max))
+    print "Date:\t",
+    listOfDates = values[max]
+    for i in listOfDates:
+        time = datetime.datetime.fromtimestamp(i+18000)
+        print time.strftime('%Y-%m-%d %H:%M:%S') + "\n\t",
 
-    length = len(values)
+    min = price[0]
+    print("\nMIN:\t" + str(min))
+    print "Date:\t",
+    listOfDates = values[min]
+    for i in listOfDates:
+        time = datetime.datetime.fromtimestamp(i+18000)
+        print time.strftime('%Y-%m-%d %H:%M:%S') + "\n\t",
 
-    print("The medium is " + str(valueSort[int(length/2)]))
-    time = datetime.datetime.fromtimestamp(values[valueSort[int(length/2)]])
-    print("The date associated with that is " + time.strftime('%Y-%m-%d %H:%M:%S'))
+    if amt%2==0:     # even
+        low = price[amt/2-1]
+        high = price[amt/2]
+        print("\nMED1:\t" + str(low))
+        print "Date:\t",
+        listOfDates = values[low]
+        for i in listOfDates:
+            time = datetime.datetime.fromtimestamp(i+18000)
+            print time.strftime('%Y-%m-%d %H:%M:%S') + "\n\t",
 
-    print
-    total = reduce(lambda x,y: x + y, valueSort)
-    avg = total/length
-    print("The mean is " + str(avg))
+        print("\nMED2:\t" + str(high))
+        print "Date:\t",
+        listOfDates = values[high]
+        for i in listOfDates:
+            time = datetime.datetime.fromtimestamp(i+18000)
+            print time.strftime('%Y-%m-%d %H:%M:%S') + "\n\t",
 
-    sum = map(lambda x: (x-avg)**2, values) # (x-avg)^2
+        print("\nAVG MED:\t" + str((high+low)/2))
+    else:               # odd
+        low = price[int(math.ceil(amt/2))]
+        print("MEDIUM:\t" + str(valueSort[low]))
+        listOfDates = values[low]
+        for i in listOfDates:
+            time = datetime.datetime.fromtimestamp(i+18000)
+            print time.strftime('%Y-%m-%d %H:%M:%S') + "\n\t",
+
+    total = reduce(lambda x,y: x + y, price)
+    avg = total/amt
+    print("\nAVG:\t" + str(avg))
+
+    sum = map(lambda x: (x-avg)**2, price) # (x-avg)^2
     total = reduce(lambda x,y: x + y, sum)  # Add all values
-    total /= length
-    print("The standard deviation is " + str(math.sqrt(total)))
+    total /= amt
+    print("SD:\t" + str(math.sqrt(total)))
