@@ -17,12 +17,12 @@
 
 from q4_p1 import wordAnalytic
 
-fout = open("top10words.txt", "a")
 lst = wordAnalytic()
 sortlst = []
 for key, value in sorted(lst.iteritems(), key=lambda (k,v): (v,k)):
-    sortlst.append(key + " " + str(value))
+    sortlst.append(key + "\t" + str(value))
 
+fout = open("top10words.txt", "a")
 for i in range(len(sortlst)-1, len(sortlst)-11, -1):
-    print sortlst[i]
+    fout.write(sortlst[i] + "\n")
 fout.close()
