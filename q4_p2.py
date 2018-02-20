@@ -14,3 +14,15 @@
 # http://www.gutenberg.org/files/100/ 100-0.txt
 
 # Part 2. Using the dictionary you created in the previous question, find the most 10 common words, and write them into top10words.txt file [5 pts].
+
+from q4_p1 import wordAnalytic
+
+fout = open("top10words.txt", "a")
+lst = wordAnalytic()
+sortlst = []
+for key, value in sorted(lst.iteritems(), key=lambda (k,v): (v,k)):
+    sortlst.append(key + " " + str(value))
+
+for i in range(len(sortlst)-1, len(sortlst)-11, -1):
+    print sortlst[i]
+fout.close()

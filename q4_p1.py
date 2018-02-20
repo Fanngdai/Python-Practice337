@@ -32,6 +32,8 @@ def wordAnalytic():
         while line:
             for ele in line.split(" "):
                 ele = ele.strip()
+                if ele == "":
+                    continue
                 word[ele] = word.get(ele,0) + 1
             line = file.readline()
         file.close()
