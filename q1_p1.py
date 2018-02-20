@@ -28,7 +28,7 @@ except IOError:
     print "Unable to open the file prices_sample.cvs"
 else:
     line = file.readline()
-    fout = open("datetimes.txt", "w")
+    fout = open("datetimes.txt", "w+")
 
     while line:
         lst = line.split(",")

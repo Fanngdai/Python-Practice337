@@ -74,10 +74,11 @@ else:
             time = datetime.datetime.fromtimestamp(i+18000)
             print time.strftime('%Y-%m-%d %H:%M:%S') + "\n\t",
 
-        print("\nAVG MED:\t" + str((high+low)/2))
+        print("\nAVGMED:\t" + str((high+low)/2))
     else:               # odd
         low = price[int(math.ceil(amt/2))]
-        print("MEDIUM:\t" + str(valueSort[low]))
+        print("\nMEDIUM:\t" + str(low))
+        print "Date:\t",
         listOfDates = values[low]
         for i in listOfDates:
             time = datetime.datetime.fromtimestamp(i+18000)

@@ -45,8 +45,8 @@ def increaseValue(password):
         if i == len(password)-2:
             return True
         if ord(password[i]) == ord(password[i+1])-1 and ord(password[i+1])-1 == ord(password[i+2])-2:
-            print(password[i] + password[i+1] + password[i+2])
             return False
+
 # Decreasing order
 #        if ord(password[i]) == ord(password[i+1])+1 and ord(password[i+1])+1 == ord(password[i+2])+2:
 #            return False

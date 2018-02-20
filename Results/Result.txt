@@ -1,15 +1,23 @@
 ##########q1_p2##########
-The max is 17178.0
-The date associated with that is 2018-01-05 23:31:02
+MAX:	17178.0
+Date:	2018-01-05 23:29:47
+	2018-01-05 23:30:01
+	2018-01-05 23:30:26
+	2018-01-05 23:31:02
+	
+MIN:	9005.0
+Date:	2018-01-17 15:34:31
+	
+MED1:	13446.22
+Date:	2018-01-11 20:52:33
+	
+MED2:	13446.29
+Date:	2018-01-12 03:11:27
+	
+AVG MED:	13446.255
 
-The min is 9005.0
-The date associated with that is 2018-01-17 15:34:31
-
-The medium is 13316.83
-The date associated with that is 2018-01-11 11:16:40
-
-The mean is 13142.3318421
-The standard deviation is 2036.70231681
+AVG:	13206.2228944
+SD:	2026.90420777
 
 
 

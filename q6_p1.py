@@ -12,8 +12,10 @@ prime = [2]
 
 # Checks if x is divisible by y
 divisible = lambda x,y: 1 if x%y==0 else 0
+max = 100
+max+=1
 
-for i in range(3,101):
+for i in range(3,max):
     prime.append(i)
     for j in prime:
         if i!= j and divisible(i,j)==1:
