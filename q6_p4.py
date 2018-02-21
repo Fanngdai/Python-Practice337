@@ -44,14 +44,14 @@ def count_pattern(str, pattern, replace_str):
             j = i + pattern_len
         else:
             result += str[i]
-    return(result)
+    return result
 
 #    pattern_check = re.compiler(pattern)
 #    pat = re.compile(pattern)
 #    pat = ascii.pat.findall(str)
 
 #str = 'shjhfdddedaABAB'
-#print(count_pattern(str, 'xyx', '123'))
+#count_pattern(str, 'xyx', '123')
 
 #str = 'aaaaa'
-#print(count_pattern(str, 'xx', '1'))
+#count_pattern(str, 'xx', '12')

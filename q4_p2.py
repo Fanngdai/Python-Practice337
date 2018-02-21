@@ -20,7 +20,7 @@ from q4_p1 import wordAnalytic
 lst = wordAnalytic()
 sortlst = []
 for key, value in sorted(lst.iteritems(), key=lambda (k,v): (v,k)):
-    sortlst.append(key + "\t" + str(value))
+    sortlst.append(key + "," + str(value))
 
 try:
     sub = 11
