@@ -27,7 +27,7 @@ try:
     if len(sortlst) < 10:
         sub = len(sortlst) + 1
     
-    fout = open("top10words.txt", "w+")
+    fout = open("top10words.txt", "w")
     for i in range(len(sortlst)-1, len(sortlst)-sub, -1):
         fout.write(sortlst[i] + "\n")
     fout.close()

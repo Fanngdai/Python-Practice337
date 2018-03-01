@@ -20,7 +20,9 @@
 
 def wordAnalytic():
     word = {}
-    input = raw_input("Enter File Name: ");
+    # input = raw_input("Enter File Name: ");
+    # Hard coded text file name
+    input = "100-0.txt"
 
     try:
         file = open(input, "r");
@@ -32,9 +34,8 @@ def wordAnalytic():
         while line:
             for ele in line.split(" "):
                 ele = ele.strip()
-                if ele == "":
-                    continue
-                word[ele] = word.get(ele,0) + 1
+                if ele != "":
+                    word[ele] = word.get(ele,0) + 1
             line = file.readline()
         file.close()
     return word

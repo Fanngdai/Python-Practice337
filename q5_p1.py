@@ -46,8 +46,9 @@ def increaseValue(password):
     for i in range(len(password)):
         if i == len(password)-2:
             return True
-        if not password[i].isdigit() and not password[i].isalpha():
-            continue
+        # Only looking at ascii values
+        #if not password[i].isdigit() and not password[i].isalpha():
+            #continue
         if ord(password[i]) == ord(password[i+1])-1 and ord(password[i+1])-1 == ord(password[i+2])-2:
             return False
 

@@ -26,7 +26,7 @@ import urllib
 r = urllib.urlopen("https://finance.google.com/finance/market_news").read()
 website = BeautifulSoup(r, "html.parser")
 
-fout = open("top10articles.txt", "w+")
+fout = open("top10articles.txt", "w")
 
 for i in range(0, 10):
     title = website.find_all(class_="name")[i].get_text()
