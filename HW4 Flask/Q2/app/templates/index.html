@@ -1,0 +1,23 @@
+{% block content %}
+    <form action="{{ url_for('index') }}" method="post">
+			{{ form.hidden_tag() }}
+        <p>
+            {{ form.firstNumber.label }}<br>
+            {{ form.firstNumber(size=32) }}<br>
+        </p>
+        <p>
+            {{ form.secondNumber.label }}<br>
+            {{ form.secondNumber(size=32) }}<br>
+        </p>
+
+				{% for subfield in form.operator %}
+				    <tr>
+				        <td>{{ subfield }}</td>
+				        <td>{{ subfield.label }}</td>
+								<br>
+				    </tr>
+				{% endfor %}
+
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

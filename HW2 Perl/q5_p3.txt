@@ -1,0 +1,35 @@
+[-+]?\d+(\.\d*)?F\b
+MATCH
+1.F
++2.22F
+-333.333F
+DOES NOT MATCH
+1.0g
+-.f
++00.3F2
+
+
+s/(#?)1|one/[\1January]/ig
+MATCH
+#1
+one
+1
+SUBSTITUTION
+[#January]
+[January]
+[January]
+DOES NOT MATCH
+#2
+3
+two
+
+
+/((.*?)\d)\s\2/
+MATCH
+123412asdf23 123412asdf2
+abc123 abc12
+!!!2 !!!
+DOES NOT MATCH
+123a 123
+abc* abc
+abc abc
